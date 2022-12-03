@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*, 
+*::after, 
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: #fefefe;
+}
+
+@layer components {
+    .btn {
+        @apply bg-[#12b488] py-1 px-3 rounded-md text-white cursor-pointer hover:bg-[#12a07a]
+    }
+
+    .form-input {
+        @apply bg-zinc-100 border-2 p-2 rounded-lg outline-none mb-5 w-full focus:border-[#12b488];
+    }
+
+    .form-btn {
+        @apply btn p-3 w-full rounded-lg text-zinc-50 mt-5 font-medium disabled:bg-slate-300;
+    }
+
+    .error {
+        @apply text-xs text-red-400 font-semibold tracking-wide;
+    }
+    
+    .post-grid {
+        @apply grid grid-cols-2 gap-4 place-items-center mt-6;
+    }
+
+    .post-icon {
+        @apply scale-125 text-slate-400 cursor-pointer;
+    }
+}
