@@ -25,6 +25,10 @@ type UserType = {
     token?: string;
 };
 
+type Like = {
+    username: string;
+};
+
 type PostType = {
     __typename: string;
     id: string;
@@ -33,10 +37,11 @@ type PostType = {
     updatedAt?: any;
     username: string;
     comments: any[];
-    likes: any[];
+    likes: Like[];
 };
 
 type AuthType = {
+    ready: boolean;
     auth: UserType;
     setAuth: Dispatch<SetStateAction<{}>>;
 };

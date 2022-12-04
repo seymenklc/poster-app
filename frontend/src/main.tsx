@@ -12,14 +12,14 @@ const root = document.getElementById('root') as HTMLElement;
 
 ReactDOM.createRoot(root).render(
   <React.StrictMode>
-    <ApolloClientProvider>
-      <AuthProvider>
+    <AuthProvider>
+      <ApolloClientProvider>
         <BrowserRouter>
           <Routes>
             <Route path='/*' element={<App />} />
           </Routes>
         </BrowserRouter>
-      </AuthProvider>
-    </ApolloClientProvider>
+      </ApolloClientProvider>
+    </AuthProvider>
   </React.StrictMode>
 );

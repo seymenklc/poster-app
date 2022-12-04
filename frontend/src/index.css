@@ -37,6 +37,7 @@ body {
     }
 
     .post-icon {
-        @apply scale-125 text-slate-400 cursor-pointer;
+        @apply scale-[1.30] text-slate-400 cursor-pointer;
+
     }
 }

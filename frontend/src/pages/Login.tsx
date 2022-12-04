@@ -30,7 +30,7 @@ export default function Login() {
         onCompleted: (user) => {
             if (user) {
                 setAuth(user.loginUser);
-                navigate('/home');
+                navigate('/');
             };
         },
         onError: (err) => {

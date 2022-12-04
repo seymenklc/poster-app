@@ -6,6 +6,11 @@ const AuthContext = createContext<AuthType>({} as AuthType);
 
 function AuthProvider({ children }: PropsWithChildren<{}>) {
     const [auth, setAuth] = useState({} as UserType);
+    const [ready, setReady] = useState(false);
+
+    useEffect(() => {
+        setReady(true);
+    }, []);
 
     useEffect(() => {
         const token = JSON.stringify(auth?.token);
@@ -33,7 +38,7 @@ function AuthProvider({ children }: PropsWithChildren<{}>) {
     }, []);
 
     return (
-        <AuthContext.Provider value={{ auth, setAuth }}>
+        <AuthContext.Provider value={{ auth, ready, setAuth }}>
             {children}
         </AuthContext.Provider>
     );

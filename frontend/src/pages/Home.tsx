@@ -1,6 +1,5 @@
-import Create from "@/components/Create";
 import Posts from "@/components/Posts";
-import PostSkeleton from "@/components/PostSkeleton";
+import Create from "@/components/Create";
 
 export default function Home() {
     return (

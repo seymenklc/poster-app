@@ -11,7 +11,7 @@ export default function Navbar() {
 
     return (
         <nav className="w-full p-4 px-28 mx-auto flex justify-between shadow-sm ">
-            <Link to='/home'>
+            <Link to='/'>
                 <h1 className="font-semibold text-2xl text-[#12b488]">Poster</h1>
             </Link>
             {!auth.username && (

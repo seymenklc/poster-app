@@ -32,7 +32,7 @@ export default function Register() {
         onCompleted: (user) => {
             if (user) {
                 setAuth(user.createUser);
-                navigate('/home');
+                navigate('/');
             };
         },
         onError: (err) => {
