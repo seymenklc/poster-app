@@ -6,9 +6,10 @@ import { useAuth } from "./useAuth";
 type Params = {
     post?: PostType;
     likePost: () => void;
+    deletePost?: () => void;
 };
 
-export const usePostLogic = ({ post, likePost }: Params) => {
+export const usePostLogic = ({ post, likePost, deletePost }: Params) => {
     const [liked, setLiked] = useState(false);
 
     const { auth } = useAuth();
@@ -20,6 +21,13 @@ export const usePostLogic = ({ post, likePost }: Params) => {
             return false;
         }
         return true;
+    };
+
+    const handleDelete = () => {
+        if (isAuthenticated() && deletePost) {
+            deletePost();
+            navigate('/');
+        }
     };
 
     const handleLike = () => {
@@ -37,5 +45,5 @@ export const usePostLogic = ({ post, likePost }: Params) => {
 
     }, [post?.likes, likePost]);
 
-    return { liked, handleLike, };
+    return { liked, handleLike, handleDelete };
 };
