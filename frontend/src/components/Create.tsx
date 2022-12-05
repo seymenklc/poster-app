@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { useMutation } from "@apollo/client";
 
+import { useMutation } from "@apollo/client";
 import { CREATE_POST } from "@/graphql/mutations";
 import { GET_POSTS } from "@/graphql/queries";
+
 import { PostMutationType } from "@/types";
 
 import { useForm } from "@/hooks/useForm";

@@ -1,10 +1,13 @@
 import moment from 'moment';
 import { Link } from 'react-router-dom';
-import { PostType } from "@/types";
+
 import { useMutation } from '@apollo/client';
 import { LIKE_POST } from '@/graphql/mutations';
-import { MdFavoriteBorder, MdOutlineModeComment, MdOutlineMore, MdFavorite } from "react-icons/md";
+
+import { PostType } from "@/types";
 import { usePostLogic } from '@/hooks/usePostLogic';
+
+import { MdFavoriteBorder, MdOutlineModeComment, MdOutlineMore, MdFavorite } from "react-icons/md";
 
 export default function Post({ item }: { item: PostType; }) {
     const [likePost] = useMutation(LIKE_POST, {
