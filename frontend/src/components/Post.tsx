@@ -1,44 +1,17 @@
 import moment from 'moment';
-import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { PostType } from "@/types";
-import { useAuth } from '@/hooks/useAuth';
 import { useMutation } from '@apollo/client';
 import { LIKE_POST } from '@/graphql/mutations';
 import { MdFavoriteBorder, MdOutlineModeComment, MdOutlineMore, MdFavorite } from "react-icons/md";
+import { usePostLogic } from '@/hooks/usePostLogic';
 
 export default function Post({ item }: { item: PostType; }) {
-    const [liked, setLiked] = useState(false);
-
-    const { auth } = useAuth();
-    const navigate = useNavigate();
-
     const [likePost] = useMutation(LIKE_POST, {
         variables: { id: item.id },
     });
 
-    const isAuthenticated = () => {
-        if (!auth.username) {
-            navigate('auth/login');
-            return false;
-        }
-        return true;
-    };
-
-    const handleLike = async () => {
-        if (isAuthenticated()) {
-            await likePost();
-        }
-    };
-
-    useEffect(() => {
-        const isLiked = item.likes.find(el => {
-            return el.username === item.username;
-        });
-
-        isLiked ? setLiked(false) : setLiked(true);
-
-    }, [item.likes, likePost]);
+    const { liked, handleLike } = usePostLogic({ likePost, post: item });
 
     return (
         <div className="bg-neutral-50 flex flex-col w-full h-52 p-3 rounded-md shadow-sm">
@@ -53,15 +26,21 @@ export default function Post({ item }: { item: PostType; }) {
             <p className='p-1 mt-1 flex-1 text-justify text-sm'>{item.content}</p>
             <div className='flex justify-between items-center p-1'>
                 <div className='flex items-center gap-4'>
-                    <span onClick={handleLike} className='post-icon hover:text-rose-500'>
+                    <span
+                        onClick={handleLike}
+                        className='post-icon hover:text-rose-500 flex items-center'
+                    >
                         {liked ? (
                             <span className='text-rose-500'>
                                 <MdFavorite />
                             </span>
-                        ) : <MdFavoriteBorder />}
+                        ) : <MdFavoriteBorder />}&nbsp;{item?.likes.length}
                     </span>
-                    <Link to={`post/${item.id}`} className='post-icon hover:text-sky-500'>
-                        <MdOutlineModeComment />
+                    <Link
+                        to={`post/${item.id}`}
+                        className='post-icon hover:text-sky-500 flex items-center'
+                    >
+                        <MdOutlineModeComment />&nbsp;{item?.comments.length}
                     </Link>
                 </div>
                 <Link to={`post/${item.id}`} className='post-icon hover:text-[#12b488]'>

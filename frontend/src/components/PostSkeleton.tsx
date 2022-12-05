@@ -11,17 +11,17 @@ export default function PostSkeleton({ count }: Props) {
 
     return (
         <>
-            {items?.map((_item, idx) => (
+            {items.length && items.map((_, idx) => (
                 <div
                     key={idx}
                     className="bg-gray-200 w-full h-32 p-3
-                     rounded-md flex gap-3 flex-col animate-pulse"
+                    rounded-md flex gap-3 flex-col animate-pulse"
                 >
                     <div className="w-[200px] bg-gray-300 h-5 rounded-sm" />
                     <div className="w-[300px] bg-gray-300 h-5 rounded-sm" />
                     <div className="w-[350px] bg-gray-300 h-5 rounded-sm" />
-                </div>))}
+                </div>
+            ))}
         </>
     );
-
 }

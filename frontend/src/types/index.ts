@@ -15,6 +15,7 @@ type PostMutationType = {
     createPost: PostType;
 };
 
+type PostQueryType = { getPost: PostType; } & QueryResult;
 type PostsQueryType = { getPosts: PostType[]; } & QueryResult;
 
 // context //
@@ -50,6 +51,7 @@ export type {
     UserMutationType,
     PostMutationType,
     PostsQueryType,
+    PostQueryType,
     UserType,
     AuthType,
     PostType

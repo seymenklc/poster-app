@@ -9,7 +9,7 @@ function AuthProvider({ children }: PropsWithChildren<{}>) {
     const [ready, setReady] = useState(false);
 
     useEffect(() => {
-        setReady(true);
+
     }, []);
 
     useEffect(() => {
@@ -18,6 +18,8 @@ function AuthProvider({ children }: PropsWithChildren<{}>) {
     }, [setAuth, auth]);
 
     useEffect(() => {
+        setReady(true);
+        // check existing token
         (() => {
             const prevToken = localStorage.getItem('token');
 
