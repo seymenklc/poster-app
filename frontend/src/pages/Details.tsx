@@ -42,7 +42,9 @@ export default function Details() {
         variables: { id: data?.getPost.id },
     });
 
-    const { liked, handleLike, handleDelete } = usePostLogic({ post, likePost, deletePost });
+    const { liked, handleLike, handleDelete } = usePostLogic({
+        post, likePost, deletePost
+    });
 
     const handleFocus = () => {
         setFocusInput(!focusInput);
@@ -65,7 +67,7 @@ export default function Details() {
                         <span className="text-gray-400">{moment(post.createdAt).fromNow()}</span>
                     </div>
                     <p className='p-4 flex-1 text-justify text-gray-700 max-h-[300px]'>
-                        {post?.content}
+                        {post.content}
                     </p>
                     <div className='flex items-center gap-5 p-5'>
                         <span
