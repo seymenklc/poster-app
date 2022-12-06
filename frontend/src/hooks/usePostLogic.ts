@@ -38,7 +38,7 @@ export const usePostLogic = ({ post, likePost, deletePost }: Params) => {
 
     useEffect(() => {
         const isLiked = post?.likes.find(el => {
-            return el.username === auth?.username;
+            return el.username === auth.username;
         });
 
         isLiked ? setLiked(true) : setLiked(false);

@@ -30,14 +30,20 @@ type Like = {
     username: string;
 };
 
+type CommentType = {
+    id: string;
+    content: string;
+    createdAt: Date;
+    username: string;
+};
+
 type PostType = {
-    __typename: string;
     id: string;
     content: string;
     createdAt: Date;
     updatedAt?: any;
     username: string;
-    comments: any[];
+    comments: CommentType[];
     likes: Like[];
 };
 
@@ -52,6 +58,7 @@ export type {
     PostMutationType,
     PostsQueryType,
     PostQueryType,
+    CommentType,
     UserType,
     AuthType,
     PostType

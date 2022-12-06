@@ -55,11 +55,14 @@ export default function CommentInput({ postId, focusInput }: Props) {
                     type="text"
                     className='form-input mb-0'
                     placeholder='this is awesome!'
+                    name='content'
                     ref={inputRef}
                     onChange={onChange}
                     value={values.content}
                 />
-                <button className='form-btn mt-0 p-2'>Comment</button>
+                <button className='form-btn mt-0 p-2 disabled:opacity-50' disabled={loading}>
+                    Comment
+                </button>
             </div>
         </form>
     );

@@ -3,9 +3,9 @@ import { useQuery } from "@apollo/client";
 import { usePagination } from "@/hooks/usePagination";
 import { PostsQueryType, PostType } from "@/types";
 
-import Post from "@/components/Post";
+import Post from "@/components/Post/Post";
 import Pagination from "@/components/Pagination";
-import PostSkeleton from "@/components/PostSkeleton";
+import PostSkeleton from "@/components/Post/PostSkeleton";
 
 export default function Posts() {
     const { data, loading, error } = useQuery<PostsQueryType>(GET_POSTS);
