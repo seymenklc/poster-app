@@ -12,16 +12,17 @@ export default function Posts() {
     const { currentItems, pageNums, paginate } = usePagination(data?.getPosts, 6);
 
     return (
-        <section>
-            {error && <p>{error.message}</p>}
+        <section className="h-full flex flex-col justify-between">
+            {error && <p className="error">{error.message}</p>}
             <div className="post-grid">
                 {loading && <PostSkeleton count={6} />}
+                {!data?.getPosts.length && <h2>No post here yet!</h2>}
                 {data && currentItems.map((item: PostType) => (
                     <Post key={item.id} item={item} />
                 ))}
             </div>
             {!loading && (
-                <div className="my-6 flex justify-center">
+                <div className="mb-24 flex justify-center">
                     <Pagination pageNums={pageNums} paginate={paginate} />
                 </div>
             )}
