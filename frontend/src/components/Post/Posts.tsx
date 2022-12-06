@@ -14,9 +14,9 @@ export default function Posts() {
     return (
         <section className="h-full flex flex-col justify-between">
             {error && <p className="error">{error.message}</p>}
+            {(!data?.getPosts.length && !loading && !error) && <h2>No post here yet!</h2>}
             <div className="post-grid">
                 {loading && <PostSkeleton count={6} />}
-                {(!data?.getPosts.length && !loading) && <h2>No post here yet!</h2>}
                 {data && currentItems.map((item: PostType) => (
                     <Post key={item.id} item={item} />
                 ))}
