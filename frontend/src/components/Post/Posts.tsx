@@ -16,7 +16,7 @@ export default function Posts() {
             {error && <p className="error">{error.message}</p>}
             <div className="post-grid">
                 {loading && <PostSkeleton count={6} />}
-                {!data?.getPosts.length && <h2>No post here yet!</h2>}
+                {(!data?.getPosts.length && !loading) && <h2>No post here yet!</h2>}
                 {data && currentItems.map((item: PostType) => (
                     <Post key={item.id} item={item} />
                 ))}
