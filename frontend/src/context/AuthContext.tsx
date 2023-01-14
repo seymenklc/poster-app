@@ -9,10 +9,6 @@ function AuthProvider({ children }: PropsWithChildren<{}>) {
     const [ready, setReady] = useState(false);
 
     useEffect(() => {
-
-    }, []);
-
-    useEffect(() => {
         const token = JSON.stringify(auth?.token);
         if (token) localStorage.setItem('token', token);
     }, [setAuth, auth]);

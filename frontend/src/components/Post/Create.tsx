@@ -7,9 +7,11 @@ import { GET_POSTS } from "@/graphql/queries";
 import { PostMutationType } from "@/types";
 
 import { useForm } from "@/hooks/useForm";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function Create() {
     const [error, setError] = useState('');
+    const { auth } = useAuth();
 
     const { values, onChange, onSubmit } = useForm(createPost, { content: '' });
 
@@ -31,7 +33,11 @@ export default function Create() {
     });
 
     async function createPost() {
-        await addPost();
+        if (auth.username) {
+            await addPost();
+        } else {
+            setError('You must be logged in to post!');
+        }
     }
 
     return (
@@ -39,7 +45,7 @@ export default function Create() {
             <div className="flex justify-center">
                 <input
                     type="search"
-                    className="block w-full p-4 text-md text-gray-900 
+                    className="block md:w-full p-4 text-md text-gray-900 w-3/4
                     border outline-none rounded-lg bg-gray-50 focus:border-[#12b488]"
                     placeholder="Have you guys heard about..."
                     name='content'
